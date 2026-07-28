@@ -1,0 +1,17 @@
+{
+  "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+  "messages": [
+    {
+      "role": "system",
+      "content": "Мы компания «Цветы для самых…». У нас скидки и акции"
+    },
+    {
+      "role": "user",
+      "content": "Напиши рекламную рассылку к 8-му марта"
+    }
+  ],
+  "stream": false,
+  "temperature": 0.5,
+  "top_p": 0.7,
+  "max_tokens": 500
+}

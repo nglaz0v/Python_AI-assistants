@@ -1,0 +1,19 @@
+{
+  "modelUri": "gpt://${folder_id}/yandexgpt-lite",
+  "completionOptions": {
+    "stream": false,
+    "temperature": 0.5,
+    "maxTokens": "1000",
+    "reasoningOptions": {
+      "mode": "DISABLED"
+    }
+  },
+  "messages": [
+    {
+   "role": "system", "text": "Мы компания «Цветы для самых…». У нас скидки и акции"
+    },
+    {
+      "role": "user", "text": "Напиши рекламную рассылку к 8-му марта"
+    }
+  ]
+}
