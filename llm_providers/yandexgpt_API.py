@@ -6,13 +6,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Получаем API ключ и folder_id из .env
-OPENAI_API_KEY = os.getenv("YANDEXGPT_API_KEY")
-FOLDER_ID = os.getenv("FOLDER_ID_YANDEX")
+YANDEXGPT_API_KEY = os.getenv("YANDEXGPT_API_KEY")
+YANDEXGPT_FOLDER_ID = os.getenv("YANDEXGPT_FOLDER_ID")
+YANDEXGPT_MODEL_NAME = os.getenv("YANDEXGPT_MODEL_NAME", "yandexgpt-lite")
 
-if not OPENAI_API_KEY:
+if not YANDEXGPT_API_KEY:
     raise ValueError("Ошибка: YANDEXGPT_API_KEY не найден в .env")
-if not FOLDER_ID:
-    raise ValueError("Ошибка: FOLDER_ID_YANDEX не найден в .env")
+if not YANDEXGPT_FOLDER_ID:
+    raise ValueError("Ошибка: YANDEXGPT_FOLDER_ID не найден в .env")
 
 class YandexGPTAPIProvider:
     def _make_request(self, messages, temperature: float, max_tokens: int) -> str:
@@ -21,8 +22,8 @@ class YandexGPTAPIProvider:
         # Формируем заголовок запроса
         headers = {
             "Content-Type": "application/json",
-            "Authorization": f"Bearer {OPENAI_API_KEY}",
-            "x-folder-id": FOLDER_ID
+            "Authorization": f"Bearer {YANDEXGPT_API_KEY}",
+            "x-folder-id": YANDEXGPT_FOLDER_ID
         }
 
         # Преобразуем сообщения в формат YandexGPT (text вместо content)
@@ -35,7 +36,7 @@ class YandexGPTAPIProvider:
 
         # Формируем тело запроса
         payload = {
-            "modelUri": f"gpt://{FOLDER_ID}/yandexgpt-lite",
+            "modelUri": f"gpt://{YANDEXGPT_FOLDER_ID}/{YANDEXGPT_MODEL_NAME}",
             "completionOptions": {
                 "stream": False,
                 "temperature": temperature,

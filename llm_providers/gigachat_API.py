@@ -12,9 +12,11 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 load_dotenv()
 
 # Получаем ключ авторизации из .env
-AUTH_KEY = os.getenv("AUTHORIZATION_KEY_SBER")
-if not AUTH_KEY:
-    raise ValueError("Ошибка: AUTHORIZATION_KEY_SBER не найден в .env")
+GIGACHAT_AUTH_KEY = os.getenv("GIGACHAT_AUTH_KEY")
+GIGACHAT_MODEL_NAME = os.getenv("GIGACHAT_MODEL_NAME", "GigaChat-2")
+
+if not GIGACHAT_AUTH_KEY:
+    raise ValueError("Ошибка: GIGACHAT_AUTH_KEY не найден в .env")
 
 class GigaChatAPIProvider:
     # Инициализируем состояние токена доступа
@@ -33,7 +35,7 @@ class GigaChatAPIProvider:
         headers = {
             "Content-Type": "application/x-www-form-urlencoded",
             "RqUID": rquid,
-            "Authorization": f"Basic {AUTH_KEY}"
+            "Authorization": f"Basic {GIGACHAT_AUTH_KEY}"
         }
         
         # Тело запроса для получения токена
@@ -70,7 +72,7 @@ class GigaChatAPIProvider:
 
         # Параметры запроса к GigaChat
         data = {
-            "model": "GigaChat-2",
+            "model": GIGACHAT_MODEL_NAME,
             "messages": messages,
             "temperature": temperature,
             "max_tokens": max_tokens
