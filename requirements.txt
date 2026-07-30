@@ -18,22 +18,25 @@ llama-index-llms-openai-like==0.5.0
 llama-index-readers-file==0.5.3
 llama-index-embeddings-huggingface==0.6.0
 
+python-telegram-bot==21.7
+vkbottle==4.7.0
+
+openai==1.91.0
+gigachat==0.1.40
+yandex-cloud-ml-sdk==0.11.0
+
+torch==2.5.1
+transformers==4.47.1
+sentence-transformers==5.6.1
+tiktoken==0.13.0
+
 chromadb==0.6.3
-transformers==4.57.3
-sentence-transformers==5.2.0
 faiss-cpu==1.13.2
 
 unstructured==0.18.27
-python-telegram-bot==21.7
-vkbottle==4.7.0
 grpcio-tools==1.71.2
-yandex-cloud-ml-sdk==0.11.0
-gigachat==0.1.40
-openai==1.91.0
 python-dotenv==1.0.1
-tiktoken==0.8.0
 pypdf==5.1.0
-torch==2.8.0
 numexpr==2.13.1
 jq==1.10.0
 ragas==0.4.3
